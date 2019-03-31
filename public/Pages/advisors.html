@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+
+<html>
+
+<head>
+  <title>Savvy - Advisors</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="/indexStyles.css">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/index.html">Savvy</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="/index.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/Pages/advisors.html">Advisors</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/Pages/mission.html">Our Mission</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/Pages/contact.html">Contact Us</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div id="table">
+    <ul id="stocks">
+    </ul>
+  </div>
+  <hr>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg">
+        <h2>
+          Savvy provides more for less.
+        </h2>
+
+        <p>
+          Savvy provides real value by giving experts a platform to schedule appointments, manage reviews, and even host webcam advise sessions.<br><br>
+          Look at what you'll save by doing your advising with Savvy instead of through an office:<br><br><br>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm">
+        <h2 class="CompareList">Traditionally:</h2><br>
+        <ul>
+          <li>Receptionist salary + benefits</li>
+          <li>Office space rent</li>
+          <li>CRM/calendar Software</li>
+          <li>Professional Videochat licensing</li>
+          <li>Marketing</li>
+          <li>Accountant salary + benefits</li>
+        </ul>
+      </div>
+      <div class="col-sm">
+        <h2 class="CompareList">With Savvy:</h2><br>
+        <ul>
+          <li>Easy importing of existing reviews</li>
+          <li>Built-in custom scheduling, videochat software</li>
+          <li>Appointment protection for no-shows</li>
+          <li>Hassle-free billing and payments</li>
+          <li>Flexibility to adjust pricing based on peak demand hours</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg">
+        <h2>The decision is easy. Get Savvy.
+        </h2><br>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div id="admin" class="content">
+    <div class="heading">
+      <h2>Add an Advisor</h2>
+    </div>
+    <div class="add">
+      <div class="form">
+        <input v-model="name" placeholder="Name">
+        <input v-model="phone" placeholder="Phone">
+        <input v-model="email" placeholder="Email">
+        <input v-model="specialty" placeholder="Specialty">
+        <input v-model="city" placeholder="City ST">
+        <br>
+        <button @click="upload">Upload</button>
+      </div>
+      <div class="upload" v-if="addItem">
+        <h2>{{addItem.title}}</h2>
+        <img :src="addItem.path" />
+      </div>
+    </div>
+    <div class="heading">
+      <h2>Edit/Delete an Advisor</h2>
+    </div>
+    <div class="edit">
+      <div class="form">
+        <input v-model="findName" placeholder="Search">
+        <div class="suggestions" v-if="suggestions.length > 0">
+          <div class="suggestion" v-for="s in suggestions" @click="selectItem(s)">{{s.name}}
+          </div>
+        </div>
+      </div>
+      <div class="upload" v-if="findItem">
+        <input v-model="findItem.name">
+        <p>Name</p>
+        <input v-model="findItem.phone">
+        <p>Phone</p>
+        <input v-model="findItem.email">
+        <p>Email</p>
+        <input v-model="findItem.specialty">
+        <p>Specialty</p>
+        <input v-model="findItem.city">
+        <p>City ST</p>
+
+      </div>
+      <div class="actions" v-if="findItem">
+        <button @click="deleteItem(findItem)">Delete</button>
+        <button @click="editItem(findItem)">Edit</button>
+      </div>
+    </div>
+  </div>
+  <br><br><br><br>
+  <footer>
+    <div class="container">
+      <div class="footerlink">
+        <a href="https://github.com/spencerrichardhenry/cp2"> GitHub Repository</a>
+      </div>
+      <p>Data provided for free by IEX. View IEXs Terms of Use.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.7/vue.js" integrity="sha256-g+Q8DFAmG5+eyRPSydX0LY4TfjsL11XSDrIGerbbEdA=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  <script text="text/html" src="/stocks.js"></script>
+  <script text="text/html" src="/pages/advisors.js"></script>
+  <script>
+    window.onload = stockInfo()
+  </script>
+</body>
+
+</html>

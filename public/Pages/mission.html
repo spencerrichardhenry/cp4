@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="/indexStyles.css">
+  <title>Savvy - Mission</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/index.html">Savvy</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="/index.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/Pages/advisors.html">Advisors</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/Pages/mission.html">Our Mission</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/Pages/contact.html">Contact Us</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div id="table">
+    <ul id="stocks">
+    </ul>
+  </div>
+  <hr>
+
+  <h2>
+    <b>Our Mission</b> is for you to change the world.
+  </h2>
+  <h3>
+    We want to change the world by changing one person at a time, by empowering everyone with a VIP advising process. Better advice means better decisions, and better decisions change the world.
+  </h3>
+
+
+  <footer>
+    <div class="container">
+      <div class="footerlink">
+        <a href="https://github.com/spencerrichardhenry/cp2"> GitHub Repository</a>
+      </div>
+      <p>Data provided for free by IEX. View IEXs Terms of Use.</p>
+    </div>
+  </footer>
+
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  <script text="text/html" src="/stocks.js"></script>
+  <script>
+    window.onload = stockInfo()
+  </script>
+</body>
+
+</html>

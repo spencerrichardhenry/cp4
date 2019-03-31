@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="/indexStyles.css">
+  <title>Savvy - Home</title>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/index.html">Savvy</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="/index.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/Pages/advisors.html">Advisors</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/Pages/mission.html">Our Mission</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/Pages/contact.html">Contact Us</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div id="table">
+    <ul id="stocks">
+    </ul>
+  </div>
+  <hr>
+  <div class="container">
+    <div id="app">
+      <div class="row">
+        <div class="advisorSearch">
+          <button @click="searchClick" v-if="!searched">Find an advisor near me</button>
+        </div>
+        <div v-if="searched">
+          <div class="form" id="indexsug">
+            <input size="8" v-model="findName" placeholder="Refine search" @click="searchClick">
+            <div class="suggestions" v-if="suggestions.length > 0">
+              <div class="suggestion" v-for="s in suggestions" @click="selectItem(s)">{{s.city}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg">
+          <div class="upload" v-if="searched">
+            <table>
+              <tr>
+                <th>Name</th>
+                <th>Specialty</th>
+                <th>Phone</th>
+                <th>E-mail</th>
+              </tr>
+              <tr v-for="s in suggestions">
+                <td> {{s.name}}
+                </td>
+                <td>
+                  {{s.specialty}}
+                </td>
+                <td>
+                  {{s.phone}}
+                </td>
+                <td>
+                  {{s.email}}
+                </td>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" id="intro">
+    <div class="row">
+      <div class="col-lg">
+        <div class="picContainer">
+          <img src="/Resources/Handshake.jpg" alt="handshake">
+          <div class="centered" id="Welcome">
+            Expert Advice. Easy Price.
+          </div>
+        </div>
+        <div class="picContainer">
+          <img src="/Resources/cutCosts.jpg" alt="cutCosts">
+          <div class="centered">
+            At Savvy, we believe everyone deserves to be well-informed. We work to make that happen by cutting costs on expert advice.
+          </div>
+        </div>
+
+        <h2>How</h2>
+        <p id="test">
+          Our peer-to-peer platform requires minimal meddling by us, so we can help you get great advice for a low price. With no brick or mortar in sight, we maintain low costs while ensuring the quality and professional experience that
+          you'd expect.
+        </p>
+        <h2>What</h2>
+        <p>
+          Savvy is an app-based platform where people with financial expertise can sell you their advice. You can provide them with as much or as little detail as you feel comfortable with, and ask as simple or complex a question. We earn our keep
+          by vetting our advisors and making the payment and scheduling process smooth and easy.
+        </p>
+        <h2>Why</h2>
+        <p>
+          Financial advice has been "for those with an account balance of $XX or more" for too long. We believe that everybody, regardless of their current position, can benefit from good financial practices. Getting advice from those who are
+          already Savvy can help your dream to become financially independent.
+        </p>
+        <h2>When and Where?</h2>
+        <p>
+          With our built-in webcam tech and the ability for Advisors to set their own hours, you can get in touch with an expert anytime, anywhere.
+        </p>
+        <h2>What now?</h2>
+        <p>
+          You're ready to jump in! Download our app, or create an account here on the web, and a short tutorial will show you how to navigate different topics, read reviews on an advisors, and schedule an appointment.
+          <br><br>
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+
+  <footer>
+    <div class="container">
+      <div class="footerlink">
+        <a href="https://github.com/spencerrichardhenry/cp3"> GitHub Repository</a>
+      </div>
+      <p>Data provided for free by IEX. View IEXs Terms of Use.</p>
+    </div>
+  </footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.2/dist/vue.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  <script text="text/html" src="/stocks.js"></script>
+  <script text="text/html" src="/Pages/scripts.js"></script>
+  <script>
+    window.onload = stockInfo()
+  </script>
+</body>
+
+</html>
